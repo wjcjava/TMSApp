@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/alpha_05_black"
+    tools:context=".view.home.activity.TrackingActivity">
+    <include
+        android:id="@+id/icon"
+        layout="@layout/layout_titler"/>
+    <RelativeLayout
+        android:id="@+id/re_track_orders"
+        android:layout_below="@id/icon"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/comment_60_dip">
+        <TextView
+            android:id="@+id/tv_order_number"
+            android:layout_width="wrap_content"
+            android:textColor="@color/black"
+            android:layout_marginLeft="@dimen/comment_10_dip"
+            android:text="订单号 DJWL20170611013"
+            android:gravity="center"
+            android:layout_height="@dimen/comment_30_dip" />
+        <TextView
+            android:id="@+id/tv_customer"
+            android:layout_width="wrap_content"
+            android:textColor="@color/black"
+            android:layout_below="@id/tv_order_number"
+            android:layout_marginLeft="@dimen/comment_10_dip"
+            android:text="客户 恒远电器上海总仓"
+            android:gravity="center"
+            android:layout_height="@dimen/comment_30_dip" />
+        <TextView
+            android:layout_width="@dimen/comment_80_dip"
+            android:layout_height="@dimen/comment_30_dip"
+            android:text="订单轨迹"
+            android:textColor="@color/addDark_green"
+            android:background="@drawable/track_orders"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/comment_20_dip"
+            android:textSize="@dimen/comment_16_size"
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginTop="@dimen/comment_10_dip"
+        android:background="@color/white"
+        android:layout_below="@id/re_track_orders"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/lvTrace"
+            android:layout_width="match_parent"
+            android:divider="@null"
+            android:clickable="false"
+            android:listSelector="@android:color/transparent"
+            android:dividerHeight="0dp"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+</RelativeLayout>

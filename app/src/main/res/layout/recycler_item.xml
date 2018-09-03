@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:background="@drawable/be_meiye_people"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_order_logo"
+        android:layout_width="@dimen/comment_40_dip"
+        android:layout_height="@dimen/comment_40_dip"
+        android:layout_marginBottom="@dimen/comment_20_dip"
+        android:layout_marginTop="@dimen/comment_30_dip"
+        android:src="@drawable/ic_management_home"
+         />
+
+    <TextView
+        android:id="@+id/tv_order_management"
+        android:layout_width="@dimen/comment_70_dip"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/comment_18_dip"
+    android:text="订单管理"
+        android:gravity="center"
+        android:textColor="@color/alpha_95_black"
+        android:textSize="@dimen/comment_16_size"
+
+        android:textStyle="bold"
+        android:layout_toEndOf="@id/iv_order_logo"
+        tools:ignore="RtlCompat" />
+
+    <TextView
+        android:id="@+id/tv_order_create"
+        android:layout_width="@dimen/comment_70_dip"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/comment_5_dip"
+        android:gravity="center"
+        android:text="创建订单"
+        android:textSize="@dimen/comment_14_size"
+        android:layout_toEndOf="@id/iv_order_logo"
+        android:layout_below="@id/tv_order_management"
+        tools:ignore="RtlCompat" />
+
+    <TextView
+        android:id="@+id/tv_oscheduling_submit"
+        android:layout_width="@dimen/comment_70_dip"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/comment_5_dip"
+        android:text="提交调度"
+        android:gravity="center"
+        android:textSize="@dimen/comment_14_size"
+        android:layout_toEndOf="@id/iv_order_logo"
+        tools:ignore="RtlCompat"
+        android:layout_below="@id/tv_order_create"
+        />
+
+</RelativeLayout>

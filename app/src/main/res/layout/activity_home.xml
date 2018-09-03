@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context=".view.home.activity.HomeActivity">
+
+    <RadioGroup
+        android:id="@+id/radio_home"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/comment_52_dip"
+        android:gravity="center"
+        android:fitsSystemWindows="true"
+        android:background="@color/home_bottom_radio"
+        android:orientation="horizontal">
+
+    <RadioButton
+        android:id="@+id/rb_home"
+        style="@style/activity_layout"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/selector_bottom_tab_home"
+        android:textSize="12sp"
+        android:text="@string/home" />
+
+    <RadioButton
+        android:id="@+id/rb_mine"
+        style="@style/activity_layout"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/selector_bottom_tab_mine"
+        android:textSize="12sp"
+        android:text="我的" />
+    </RadioGroup>
+    <e.library.NoScrollViewPager
+        android:layout_above="@id/radio_home"
+        android:id="@+id/pager_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+</RelativeLayout>
