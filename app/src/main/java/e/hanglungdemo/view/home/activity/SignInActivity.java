@@ -244,6 +244,7 @@ public class SignInActivity extends BaseActivity {
                     // 3.media.getCompressPath();为压缩后path，需判断media.isCompressed();是否为true
                     // 如果裁剪并压缩了，已取压缩路径为准，因为是先裁剪后压缩的
                     for (LocalMedia media : selectList) {
+
                         Log.i("图片-----》", media.getPath());
                     }
                     adapter.setList(selectList);

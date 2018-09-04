@@ -53,8 +53,6 @@ public class SplashActivity extends BaseActivity{
                     }
 
                     break;
-                case 2:
-                    break;
                 default:
                     break;
             }

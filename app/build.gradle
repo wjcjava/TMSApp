@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
+    aaptOptions {         cruncherEnabled = false     }
     compileSdkVersion 27
     defaultConfig {
         applicationId "e.hanglungdemo"
@@ -18,6 +19,7 @@ android {
         }
     }
 }
+
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')

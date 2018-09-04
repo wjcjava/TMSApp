@@ -2,6 +2,9 @@ package e.hanglungdemo;
 
 import android.view.animation.LinearInterpolator;
 
+/**
+ * 插值器
+ */
 class JellyInterpolator extends LinearInterpolator {
     private float factor;
 

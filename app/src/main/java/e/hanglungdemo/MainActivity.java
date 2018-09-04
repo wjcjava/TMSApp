@@ -49,15 +49,12 @@ public class MainActivity extends BaseActivity {
                 // 隐藏输入框
                 mName.setVisibility(View.INVISIBLE);
                 mPsw.setVisibility(View.INVISIBLE);
-
                 inputAnimator(mInputLayout, mWidth, mHeight);
                 break;
         }
     }
-
     /**
      * 输入框的动画效果
-     *
      * @param view 控件
      * @param w    宽
      * @param h    高
@@ -88,7 +85,6 @@ public class MainActivity extends BaseActivity {
             public void onAnimationStart(Animator animation) {
 
             }
-
             @Override
             public void onAnimationRepeat(Animator animation) {
 
