@@ -1,19 +1,39 @@
 package e.hanglungdemo.view.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.content.res.XmlResourceParser;
+import android.net.Uri;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.text.style.TextAppearanceSpan;
+import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.List;
+import org.xmlpull.v1.XmlPullParserException;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import e.hanglungdemo.MainActivity;
 import e.hanglungdemo.R;
 import e.hanglungdemo.view.bean.TraceBean;
+import e.library.T;
 
-public class TraceListAdapter extends BaseAdapter {
+public class TraceListAdapter extends BaseAdapter{
     private Context context;
     private List<TraceBean> traceBeanList ;
     private static final int TYPE_TOP = 0x0000;
@@ -82,8 +102,51 @@ public class TraceListAdapter extends BaseAdapter {
         }
 
         holder.tvAcceptTime.setText(traceBean.getAcceptTime());
-        holder.tvAcceptStation.setText(traceBean.getAcceptStation());
+        //holder.tvAcceptStation.setText(traceBean.getAcceptStation());
+        SpannableString sp = new SpannableString(traceBean.getAcceptStation());
+
+        checkPhoneText(holder.tvAcceptStation,sp, traceBean.getAcceptStation());
+        OnClickListener(holder.tvAcceptStation);
         return convertView;
+    }
+
+    private void OnClickListener(TextView tvAcceptStation) {
+        tvAcceptStation.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                boolean ret = false;
+                CharSequence text = ((TextView) v).getText();
+                Spannable stext = Spannable.Factory.getInstance().newSpannable(text);
+                TextView widget = (TextView) v;
+                int action = event.getAction();
+                //根据点击判断是否在spannable对象上；
+                if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_DOWN) {
+
+                    int x = (int) event.getX();
+                    int y = (int) event.getY();
+
+                    x -= widget.getTotalPaddingLeft();
+                    y -= widget.getTotalPaddingTop();
+
+                    x += widget.getScrollX();
+                    y += widget.getScrollY();
+
+                    Layout layout = widget.getLayout();
+                    int line = layout.getLineForVertical(y);
+                    int off = layout.getOffsetForHorizontal(line, x);
+
+                    ClickableSpan[] link = stext.getSpans(off, off, ClickableSpan.class);
+
+                    if (link.length != 0) {
+                        if (action == MotionEvent.ACTION_UP) {
+                            link[0].onClick(widget);
+                        }
+                        ret = true;
+                    }
+                }
+                return ret;
+            }
+        });
     }
 
     @Override
@@ -99,5 +162,41 @@ public class TraceListAdapter extends BaseAdapter {
         public TextView tvTopLine, tvDot, tv_new;
         public ImageView ivGoods,ivGoodsTwo;
     }
+    // 正则表达式，提取我们所有匹配的内容；
+    private void checkPhoneText(TextView tvAcceptStation, SpannableString sp, String text) {
+        Pattern pattern = Pattern
+                .compile("\\d{3}-\\d{8}|\\d{4}-\\d{7}|\\d{11}");
+        Matcher matcher = pattern.matcher(text);
+
+        int start = 0;
+        //遍历取出字符串中所有的符合条件的；
+        while (matcher.find(start)) {
+            start = matcher.end();
+
+
+            sp.setSpan(new MyUrlSpan(matcher.group()), matcher.start(),
+                    matcher.end(), Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
+
+            if (start >= text.length()) {
+                break;
+            }
+        }
+        tvAcceptStation.setText(sp);
+
+    }
+
+    class MyUrlSpan extends ClickableSpan {
+        private String mUrl;
+
+        MyUrlSpan(String url) {
+            mUrl = url;
+        }
+        //点击链接下划线，弹出dialog，提示提电话，或者发短信；
+        @Override
+        public void onClick(View widget) {
+            T.showLongToast("您点击了我");
+        }
+    }
+
 
 }
