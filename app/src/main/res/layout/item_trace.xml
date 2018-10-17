@@ -87,12 +87,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tvAcceptTime"
             android:layout_marginLeft="@dimen/comment_5_dip"
-            android:autoLink="phone"
             android:layout_marginTop="@dimen/comment_5_dip"
             android:layout_toRightOf="@id/iv_AcceptStation"
             android:text="在湖南隆回县公司进行到件扫描"
             android:textColor="@color/black"
-            android:textSize="@dimen/comment_12_size" />
+             />
 
         <ImageView
             android:id="@+id/iv_goods"
