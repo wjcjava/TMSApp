@@ -33,11 +33,12 @@ import e.hanglungdemo.R;
 import e.hanglungdemo.view.bean.TraceBean;
 import e.library.T;
 
-public class TraceListAdapter extends BaseAdapter{
+public class TraceListAdapter extends BaseAdapter {
     private Context context;
-    private List<TraceBean> traceBeanList ;
+    private List<TraceBean> traceBeanList;
     private static final int TYPE_TOP = 0x0000;
     private static final int TYPE_NORMAL = 0x0001;
+    private Intent intent;
 
     public TraceListAdapter(Context context, List<TraceBean> traceBeanList) {
         this.context = context;
@@ -69,12 +70,12 @@ public class TraceListAdapter extends BaseAdapter{
             holder = new ViewHolder();
             convertView = LayoutInflater.from(context).inflate(R.layout.item_trace, parent, false);
             holder.tvAcceptTime = convertView.findViewById(R.id.tvAcceptTime);
-            holder.tvAcceptStation =  convertView.findViewById(R.id.tvAcceptStation);
-            holder.tvTopLine =  convertView.findViewById(R.id.tvTopLine);
-            holder.tvDot =  convertView.findViewById(R.id.tvDot);
+            holder.tvAcceptStation = convertView.findViewById(R.id.tvAcceptStation);
+            holder.tvTopLine = convertView.findViewById(R.id.tvTopLine);
+            holder.tvDot = convertView.findViewById(R.id.tvDot);
             holder.tv_new = convertView.findViewById(R.id.tv_new);
-            holder.ivGoods=convertView.findViewById(R.id.iv_goods);
-            holder.ivGoodsTwo=convertView.findViewById(R.id.iv_goods_two);
+            holder.ivGoods = convertView.findViewById(R.id.iv_goods);
+            holder.ivGoodsTwo = convertView.findViewById(R.id.iv_goods_two);
             convertView.setTag(holder);
         }
 
@@ -105,7 +106,7 @@ public class TraceListAdapter extends BaseAdapter{
         //holder.tvAcceptStation.setText(traceBean.getAcceptStation());
         SpannableString sp = new SpannableString(traceBean.getAcceptStation());
 
-        checkPhoneText(holder.tvAcceptStation,sp, traceBean.getAcceptStation());
+        checkPhoneText(holder.tvAcceptStation, sp, traceBean.getAcceptStation());
         OnClickListener(holder.tvAcceptStation);
         return convertView;
     }
@@ -160,13 +161,14 @@ public class TraceListAdapter extends BaseAdapter{
     static class ViewHolder {
         public TextView tvAcceptTime, tvAcceptStation;
         public TextView tvTopLine, tvDot, tv_new;
-        public ImageView ivGoods,ivGoodsTwo;
+        public ImageView ivGoods, ivGoodsTwo;
     }
+
     // 正则表达式，提取我们所有匹配的内容；
     private void checkPhoneText(TextView tvAcceptStation, SpannableString sp, String text) {
         Pattern pattern = Pattern
                 .compile("\\d{3}-\\d{8}|\\d{4}-\\d{7}|\\d{11}");
-        Matcher matcher = pattern.matcher(text);
+        final Matcher matcher = pattern.matcher(text);
 
         int start = 0;
         //遍历取出字符串中所有的符合条件的；
@@ -174,9 +176,25 @@ public class TraceListAdapter extends BaseAdapter{
             start = matcher.end();
 
 
-            sp.setSpan(new MyUrlSpan(matcher.group()), matcher.start(),
-                    matcher.end(), Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
+//            sp.setSpan(new MyUrlSpan(matcher.group()), matcher.start(),
+//                    matcher.end(), Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
+            ClickableSpan clickableSpan = new ClickableSpan() {
+                @Override
+                public void onClick(View widget) {
+                    intent = new Intent(Intent.ACTION_CALL);
+                    Uri data = Uri.parse("tel:" + matcher.group());
+                    intent.setData(data);
+                    context.startActivity(intent);
+                }
 
+                @Override
+                public void updateDrawState(TextPaint ds) {
+                    ds.setUnderlineText(false);
+                    super.updateDrawState(ds);
+                }
+            };
+            //设置点击
+            sp.setSpan(clickableSpan, matcher.start(), matcher.end(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             if (start >= text.length()) {
                 break;
             }
@@ -185,18 +203,27 @@ public class TraceListAdapter extends BaseAdapter{
 
     }
 
-    class MyUrlSpan extends ClickableSpan {
-        private String mUrl;
-
-        MyUrlSpan(String url) {
-            mUrl = url;
-        }
-        //点击链接下划线，弹出dialog，提示提电话，或者发短信；
-        @Override
-        public void onClick(View widget) {
-            T.showLongToast("您点击了我");
-        }
-    }
+//    class MyUrlSpan extends ClickableSpan {
+//        private String mUrl;
+//        private Intent intent;
+//
+//        MyUrlSpan(String url) {
+//            mUrl = url;
+//        }
+//        //点击链接下划线，弹出dialog，提示提电话，或者发短信；
+//        @Override
+//        public void onClick(View widget) {
+////            intent = new Intent(
+////                    Intent.ACTION_CALL, Uri
+////                    .parse("tel:" + mUrl));
+////            context.startActivity(intent);
+//            intent = new Intent(Intent.ACTION_CALL);
+//            Uri data = Uri.parse("tel:" + mUrl);
+//            intent.setData(data);
+//            context.startActivity(intent);
+//
+//        }
+//    }
 
 
 }
