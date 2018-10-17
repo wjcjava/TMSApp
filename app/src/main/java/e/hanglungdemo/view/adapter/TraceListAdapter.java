@@ -190,7 +190,6 @@ public class TraceListAdapter extends BaseAdapter {
                 .addViewOnClickListener(R.id.bt_dissmess, new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
                         dialog.close();
                     }
                 })

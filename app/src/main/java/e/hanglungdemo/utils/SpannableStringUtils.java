@@ -19,9 +19,12 @@ import android.text.style.SuperscriptSpan;
 import android.text.style.UnderlineSpan;
 import android.view.View;
 
+
 /**
- * @author ALguojian
- *         on 2017/10/24.
+ *
+ * 封装：SpannableStringUtils
+ * @作者：wangjunchao
+ * @创建日期： 2018/10/17 1:18 PM
  */
 
 public class SpannableStringUtils extends SpannableString {
