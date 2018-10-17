@@ -4,12 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.XmlResourceParser;
+import android.graphics.Color;
 import android.net.Uri;
+import android.support.v4.content.ContextCompat;
 import android.text.Layout;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.TextAppearanceSpan;
 import android.text.style.UnderlineSpan;
@@ -20,6 +23,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -30,6 +34,7 @@ import java.util.regex.Pattern;
 
 import e.hanglungdemo.MainActivity;
 import e.hanglungdemo.R;
+import e.hanglungdemo.utils.SpannableStringUtils;
 import e.hanglungdemo.view.bean.TraceBean;
 import e.library.T;
 
@@ -103,52 +108,15 @@ public class TraceListAdapter extends BaseAdapter {
         }
 
         holder.tvAcceptTime.setText(traceBean.getAcceptTime());
-        //holder.tvAcceptStation.setText(traceBean.getAcceptStation());
-        SpannableString sp = new SpannableString(traceBean.getAcceptStation());
+        holder.tvAcceptStation.setText(traceBean.getAcceptStation());
+        SpannableStringUtils sp = new SpannableStringUtils(traceBean.getAcceptStation());
 
         checkPhoneText(holder.tvAcceptStation, sp, traceBean.getAcceptStation());
-        OnClickListener(holder.tvAcceptStation);
         return convertView;
     }
 
-    private void OnClickListener(TextView tvAcceptStation) {
-        tvAcceptStation.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                boolean ret = false;
-                CharSequence text = ((TextView) v).getText();
-                Spannable stext = Spannable.Factory.getInstance().newSpannable(text);
-                TextView widget = (TextView) v;
-                int action = event.getAction();
-                //根据点击判断是否在spannable对象上；
-                if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_DOWN) {
 
-                    int x = (int) event.getX();
-                    int y = (int) event.getY();
 
-                    x -= widget.getTotalPaddingLeft();
-                    y -= widget.getTotalPaddingTop();
-
-                    x += widget.getScrollX();
-                    y += widget.getScrollY();
-
-                    Layout layout = widget.getLayout();
-                    int line = layout.getLineForVertical(y);
-                    int off = layout.getOffsetForHorizontal(line, x);
-
-                    ClickableSpan[] link = stext.getSpans(off, off, ClickableSpan.class);
-
-                    if (link.length != 0) {
-                        if (action == MotionEvent.ACTION_UP) {
-                            link[0].onClick(widget);
-                        }
-                        ret = true;
-                    }
-                }
-                return ret;
-            }
-        });
-    }
 
     @Override
     public int getItemViewType(int id) {
@@ -165,7 +133,7 @@ public class TraceListAdapter extends BaseAdapter {
     }
 
     // 正则表达式，提取我们所有匹配的内容；
-    private void checkPhoneText(TextView tvAcceptStation, SpannableString sp, String text) {
+    private void checkPhoneText(TextView tvAcceptStation, SpannableStringUtils sp, String text) {
         Pattern pattern = Pattern
                 .compile("\\d{3}-\\d{8}|\\d{4}-\\d{7}|\\d{11}");
         final Matcher matcher = pattern.matcher(text);
@@ -174,56 +142,24 @@ public class TraceListAdapter extends BaseAdapter {
         //遍历取出字符串中所有的符合条件的；
         while (matcher.find(start)) {
             start = matcher.end();
+            sp.setColor(Color.BLUE, matcher.start(), matcher.end())
+                    .setOnClickSpanListener(new SpannableStringUtils.OnClickSpanListener() {
+                        @Override
+                        public void OnClickSpanListener() {
 
 
-//            sp.setSpan(new MyUrlSpan(matcher.group()), matcher.start(),
-//                    matcher.end(), Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
-            ClickableSpan clickableSpan = new ClickableSpan() {
-                @Override
-                public void onClick(View widget) {
-                    intent = new Intent(Intent.ACTION_CALL);
-                    Uri data = Uri.parse("tel:" + matcher.group());
-                    intent.setData(data);
-                    context.startActivity(intent);
-                }
+                        }
+                    });
 
-                @Override
-                public void updateDrawState(TextPaint ds) {
-                    ds.setUnderlineText(false);
-                    super.updateDrawState(ds);
-                }
-            };
-            //设置点击
-            sp.setSpan(clickableSpan, matcher.start(), matcher.end(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
             if (start >= text.length()) {
                 break;
             }
         }
+        tvAcceptStation.setMovementMethod(LinkMovementMethod.getInstance());
+        tvAcceptStation.setTextSize(12);
         tvAcceptStation.setText(sp);
 
     }
-
-//    class MyUrlSpan extends ClickableSpan {
-//        private String mUrl;
-//        private Intent intent;
-//
-//        MyUrlSpan(String url) {
-//            mUrl = url;
-//        }
-//        //点击链接下划线，弹出dialog，提示提电话，或者发短信；
-//        @Override
-//        public void onClick(View widget) {
-////            intent = new Intent(
-////                    Intent.ACTION_CALL, Uri
-////                    .parse("tel:" + mUrl));
-////            context.startActivity(intent);
-//            intent = new Intent(Intent.ACTION_CALL);
-//            Uri data = Uri.parse("tel:" + mUrl);
-//            intent.setData(data);
-//            context.startActivity(intent);
-//
-//        }
-//    }
-
 
 }
