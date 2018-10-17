@@ -2,13 +2,13 @@
 <resources>
 
 
-        <color name="magenta">#ff00ff</color><!--红紫色 -->
+    <color name="magenta">#ff00ff</color><!--红紫色 -->
 
-        <color name="royalblue">#4169E1</color> <!--皇家蓝 -->
-        <color name="gray">#808080</color><!--灰色 -->
-        <color name="grey">#808080</color><!--灰色 -->
-        <color name="transparent">#0000</color><!-- 透明 -->
-        <color name="transparent2">#1000</color><!-- 透明 -->
+    <color name="royalblue">#4169E1</color> <!--皇家蓝 -->
+    <color name="gray">#808080</color><!--灰色 -->
+    <color name="grey">#808080</color><!--灰色 -->
+    <color name="transparent">#0000</color><!-- 透明 -->
+    <color name="transparent2">#1000</color><!-- 透明 -->
     <color name="colorPrimary">#EC5990</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
