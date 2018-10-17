@@ -7,10 +7,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dip"
+        android:layout_margin="@dimen/comment_20_dip"
         android:background="@drawable/radius_drawable_bg"
         android:orientation="vertical"
-        android:padding="10dip" >
+        android:padding="@dimen/comment_10_dip" >
 
         <LinearLayout
             android:id="@+id/input_layout_name"
@@ -28,19 +28,19 @@
                 android:id="@+id/et_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dip"
-                android:background="#00000000"
+                android:layout_marginLeft="@dimen/comment_10_dip"
+                android:background="@color/white"
                 android:hint="账号/用户名/邮箱"
-                android:padding="5dip"
-                android:textSize="16sp" />
+                android:padding="@dimen/comment_5_dip"
+                android:textSize="@dimen/comment_14_size" />
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_marginBottom="5dip"
-            android:layout_marginTop="5dip"
-            android:background="#eeeeee" />
+            android:layout_height="@dimen/comment_1_dip"
+            android:layout_marginBottom="@dimen/comment_5_dip"
+            android:layout_marginTop="@dimen/comment_5_dip"
+            android:background="@color/alpha_05_black" />
 
         <LinearLayout
             android:id="@+id/input_layout_psw"
@@ -58,12 +58,12 @@
                 android:id="@+id/et_pwt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dip"
-                android:background="#00000000"
+                android:layout_marginLeft="@dimen/comment_10_dip"
+                android:background="@color/white"
                 android:hint="密码"
                 android:inputType="textPassword"
-                android:padding="5dip"
-                android:textSize="16sp" />
+                android:padding="@dimen/comment_5_dip"
+                android:textSize="@dimen/comment_14_size" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

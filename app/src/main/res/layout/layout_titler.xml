@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/recycler"
-
     android:background="@color/royalblue"
     android:layout_height="@dimen/comment_50_dip">
 
@@ -21,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/alpha_95_black"
-        android:textSize="@dimen/comment_16_size"
+        android:textSize="@dimen/comment_14_size"
         android:layout_centerInParent="true"
         android:lines="1"
         android:ellipsize="marquee"
@@ -43,7 +42,7 @@
         android:id="@+id/title_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/comment_16_size"
+        android:textSize="@dimen/comment_14_size"
         android:enabled="true"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"

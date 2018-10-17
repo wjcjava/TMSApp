@@ -14,5 +14,11 @@
         </attr>
         <attr name="ratingProgress"  format="integer"/>
     </declare-styleable>
+    <!--自定义TextView达成屏幕适配效果-->
+        <declare-styleable name="ScaleTextView">
+            <attr name="baseScreenHeight" format="integer"/>
+            <attr name="textSizePx" format="integer" />
+            <attr name="textBold" format="boolean" />
+        </declare-styleable>
 
 </resources>

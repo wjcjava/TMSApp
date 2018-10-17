@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/comment_30_dip"
         android:text="POPOP"
-        android:textSize="@dimen/comment_16_size"
+        android:textSize="@dimen/comment_14_size"
         android:textColor="@color/black"
         />
 </LinearLayout>

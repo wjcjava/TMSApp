@@ -6,7 +6,7 @@
     android:id="@+id/relayout_title"
     android:background="@color/transparent"
     android:gravity="center_vertical"
-    android:padding="10dip">
+    android:padding="@dimen/comment_10_dip">
 
     <ImageView
         android:id="@+id/title_back"
