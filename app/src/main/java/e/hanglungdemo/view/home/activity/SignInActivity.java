@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -35,17 +37,17 @@ public class SignInActivity extends BaseActivity {
 
     @Bind(R.id.title_title)
     TextView trackTitle;
-    private boolean isClick;
-    @Bind(R.id.iv_cargo_damage)
-    ImageView cargoDamage;
-    @Bind(R.id.iv_goods_lost)
-    ImageView goodsLost;
     @Bind(R.id.recycler)
     RecyclerView recyclerView;
+    @Bind(R.id.et_lob)
+    EditText etLob;
+    @Bind(R.id.box_cargo_damage)
+    CheckBox damageBox;
+    @Bind(R.id.box_goods_lost)
+    CheckBox lostBox;
     private List<LocalMedia> selectList = new ArrayList<>();
     private GridImageAdapter adapter;
     private int maxSelectNum = 9;
-    private ImageView left_back;
 
     private List<PictureBean> pictureBeanList = new ArrayList<>();
     private int themeId;
@@ -64,39 +66,32 @@ public class SignInActivity extends BaseActivity {
 
         trackTitle.setTextColor(getResources().getColor(R.color.white));
         trackTitle.setText("确认签收");
+        String etLobString=etLob.getText().toString().trim();
 
     }
 
-    @OnClick({R.id.title_back, R.id.iv_cargo_damage, R.id.iv_goods_lost,
-            R.id.tv_receiving
+    @OnClick({R.id.title_back, R.id.box_cargo_damage, R.id.box_goods_lost,
+            R.id.tv_receiving,R.id.et_lob
     })
     public void click(View view) {
         switch (view.getId()) {
             case R.id.title_back:
                 finish();
                 break;
-            case R.id.iv_cargo_damage:
-                selsected(cargoDamage);
+            case R.id.box_cargo_damage:
+
                 break;
-            case R.id.iv_goods_lost:
-                selsected(goodsLost);
+            case R.id.box_goods_lost:
+
                 break;
             case R.id.tv_receiving:
                 T.showShortToast("你点击了收货功能");
                 break;
+            case R.id.et_lob:
+                etLob.setCursorVisible(true);
+                break;
         }
     }
-
-    private void selsected(ImageView view) {
-        if (isClick) {
-            view.setImageResource(R.drawable.icon_install_unselected);
-            isClick = false;
-        } else {
-            view.setImageResource(R.drawable.icon_install_selected);
-            isClick = true;
-        }
-    }
-
     @Override
     protected void initData() {
         super.initData();

@@ -10,10 +10,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.Spinner;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
@@ -40,13 +42,14 @@ public class HomeFragment extends BaseFragment {
     CheckBox numbers;
     @Bind(R.id.et_order_home)
     EditText orderNumber;
+
     int[] orderImage = {R.drawable.ic_management_home, R.drawable.ic_scheduling_home,
             R.drawable.ic_tracking_home, R.drawable.ic_price_home};
     String[] order = {"订单管理", "订单调度", "订单跟踪", "订单询价"};
     String[] ordertitle = {"创建订单", "调度订单", "订单轨迹", "发布询价"};
     String[] orderfunction = {"提交调度", "中转，拆单", "客服反馈", "抢单报价"};
     String[] orderOn = {"POP单号", "WSE单号", "TER单号", "ERT单号"};
-    private PopupWindow window;
+   private PopupWindow window;
     private List<OrderOnBean> onBeanList = new ArrayList<>();
 
     @Override
@@ -117,16 +120,19 @@ public class HomeFragment extends BaseFragment {
                 numbers.setChecked(false);
             }
         });
+
     }
+
 
     @OnClick({R.id.cb_numbers, R.id.et_order_home})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.cb_numbers:
                 numbers.setChecked(true);
+                numbers.setCursorVisible(true);
                 // 显示PopupWindow，其中：
                 // 第一个参数是PopupWindow的锚点，第二和第三个参数分别是PopupWindow相对锚点的x、y偏移
-                window.showAsDropDown(numbers);
+               window.showAsDropDown(numbers);
                 break;
             case R.id.et_order_home:
                 orderNumber.setCursorVisible(true);

@@ -27,8 +27,9 @@
     <e.hanglungdemo.utils.ScrollInterceptScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/icon"
-        android:layout_above="@id/tv_receiving"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="35dp"
         android:scrollbars="vertical">
 
         <RelativeLayout
@@ -163,6 +164,7 @@
                     app:touchAble="true" />
 
                 <EditText
+                    android:id="@+id/et_lob"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/comment_100_dip"
                     android:layout_below="@+id/tv_leave_word"
@@ -174,9 +176,9 @@
                     android:background="@color/transparent2"
                     android:cursorVisible="false"
                     android:gravity="top|left"
+                    android:hint="司机服务很好，给个赞!"
                     android:paddingLeft="@dimen/comment_10_dip"
                     android:paddingTop="@dimen/comment_5_dip"
-                    android:hint="司机服务很好，给个赞!"
                     android:textColor="@color/black"
                     android:textSize="@dimen/comment_14_size"
                     android:textStyle="bold" />
@@ -205,12 +207,14 @@
                         android:textSize="@dimen/comment_14_size"
                         android:textStyle="bold" />
 
-                    <ImageView
-                        android:id="@+id/iv_cargo_damage"
+                    <CheckBox
+                        android:id="@+id/box_cargo_damage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/comment_2_dip"
-                        android:src="@drawable/icon_install_unselected" />
+                        android:background="@drawable/selector_sign"
+                        android:button="@null"
+                        />
                 </LinearLayout>
 
                 <LinearLayout
@@ -227,12 +231,13 @@
                         android:textSize="@dimen/comment_14_size"
                         android:textStyle="bold" />
 
-                    <ImageView
-                        android:id="@+id/iv_goods_lost"
+                    <CheckBox
+                        android:id="@+id/box_goods_lost"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/comment_2_dip"
-                        android:src="@drawable/icon_install_unselected" />
+                        android:button="@null"
+                        android:background="@drawable/selector_sign" />
                 </LinearLayout>
 
             </LinearLayout>

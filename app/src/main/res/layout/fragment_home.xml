@@ -34,7 +34,7 @@
                 android:gravity="center"
                 android:text="ERP单号"
                 android:textColor="@color/white"
-                android:textSize="@dimen/comment_12_size"/>
+                android:textSize="@dimen/comment_14_size"/>
             <EditText
                 android:id="@+id/et_order_home"
                 android:layout_weight="4"
