@@ -36,18 +36,12 @@ public class CropImageView extends TransformImageView {
     public static final float DEFAULT_MAX_SCALE_MULTIPLIER = 10.0f;
     public static final float SOURCE_IMAGE_ASPECT_RATIO = 0f;
     public static final float DEFAULT_ASPECT_RATIO = SOURCE_IMAGE_ASPECT_RATIO;
-
     private final RectF mCropRect = new RectF();
-
     private final Matrix mTempMatrix = new Matrix();
-
     private float mTargetAspectRatio;
     private float mMaxScaleMultiplier = DEFAULT_MAX_SCALE_MULTIPLIER;
-
     private CropBoundsChangeListener mCropBoundsChangeListener;
-
     private Runnable mWrapCropBoundsRunnable, mZoomImageToPositionRunnable = null;
-
     private float mMaxScale, mMinScale;
     private int mMaxResultImageSizeX = 0, mMaxResultImageSizeY = 0;
     private long mImageToWrapCropBoundsAnimDuration = DEFAULT_IMAGE_TO_CROP_BOUNDS_ANIM_DURATION;
@@ -72,7 +66,6 @@ public class CropImageView extends TransformImageView {
                                  @Nullable BitmapCropCallback cropCallback) {
         cancelAllAnimations();
         setImageToWrapCropBounds(false);
-
         final ImageState imageState = new ImageState(
                 mCropRect, RectUtils.trapToRect(mCurrentImageCorners),
                 getCurrentScale(), getCurrentAngle());
@@ -81,7 +74,6 @@ public class CropImageView extends TransformImageView {
                 mMaxResultImageSizeX, mMaxResultImageSizeY,
                 compressFormat, compressQuality,
                 getImageInputPath(), getImageOutputPath(), getExifInfo());
-
         new BitmapCropTask(getContext(), getViewBitmap(), imageState, cropParameters, cropCallback).execute();
     }
 
@@ -544,6 +536,7 @@ public class CropImageView extends TransformImageView {
             mOldScale = oldScale;
             mDeltaScale = deltaScale;
             mWillBeImageInBoundsAfterTranslate = willBeImageInBoundsAfterTranslate;
+
         }
 
         @Override

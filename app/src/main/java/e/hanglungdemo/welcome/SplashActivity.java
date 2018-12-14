@@ -20,10 +20,12 @@ import e.library.SPUtil;
 public class SplashActivity extends BaseActivity{
 
 
+    private int requestCode;
 
     @Override
     public void initView() {
         handler.sendEmptyMessageDelayed(1,1000*3);
+
 
     }
 
@@ -34,6 +36,8 @@ public class SplashActivity extends BaseActivity{
         //设置全屏
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
         return R.layout.activity_splash;
     }
 

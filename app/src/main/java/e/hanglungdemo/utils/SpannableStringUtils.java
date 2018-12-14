@@ -104,7 +104,6 @@ public class SpannableStringUtils extends SpannableString {
         return this;
     }
 
-
     /**
      * 设置上标
      *
@@ -112,6 +111,7 @@ public class SpannableStringUtils extends SpannableString {
      * @param end
      * @return
      */
+
     public SpannableStringUtils setSuperscriptSpan(int start, int end) {
 
         SuperscriptSpan span = new SuperscriptSpan();
@@ -216,6 +216,7 @@ public class SpannableStringUtils extends SpannableString {
     public interface OnClickSpanListener {
 
         void OnClickSpanListener();
+
     }
 
 

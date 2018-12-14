@@ -10,12 +10,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import android.widget.Spinner;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
@@ -136,11 +134,11 @@ public class HomeFragment extends BaseFragment {
                 break;
             case R.id.et_order_home:
                 orderNumber.setCursorVisible(true);
+                orderNumber.setTextColor(this.getResources().getColor(R.color.white));
+                orderNumber.setHint(null);
                 break;
 
 
         }
     }
-
-
 }

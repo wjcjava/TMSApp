@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * sp数据库，用来保存数据
@@ -73,6 +72,7 @@ public class SPUtil {
         }
 
         return null;
+
     }
 
     /**
@@ -121,6 +121,7 @@ public class SPUtil {
      * @param context
      * @return
      */
+
     public static Map<String, ?> getAll(Context context) {
         SharedPreferences sp = context.getSharedPreferences(FILE_NAME,
                 Context.MODE_PRIVATE);
@@ -132,6 +133,7 @@ public class SPUtil {
      *
      * @author zhy
      */
+
     private static class SharedPreferencesCompat {
         private static final Method sApplyMethod = findApplyMethod();
 
@@ -156,6 +158,7 @@ public class SPUtil {
          *
          * @param editor
          */
+
         public static void apply(SharedPreferences.Editor editor) {
             try {
                 if (sApplyMethod != null) {
@@ -163,8 +166,11 @@ public class SPUtil {
                     return;
                 }
             } catch (IllegalArgumentException e) {
+
             } catch (IllegalAccessException e) {
+
             } catch (InvocationTargetException e) {
+
             }
             editor.commit();
         }

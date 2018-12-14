@@ -19,6 +19,7 @@ import e.hanglungdemo.view.home.fragment.HomeFragment;
 import e.hanglungdemo.view.home.fragment.SettingFragment;
 import e.library.BaseActivity;
 import e.library.NoScrollViewPager;
+import e.library.commonwidget.NotifyUtil;
 
 public class HomeActivity extends BaseActivity{
     @Bind(R.id.pager_home)
@@ -27,15 +28,12 @@ public class HomeActivity extends BaseActivity{
     RadioButton rbHome;
     @Bind(R.id.rb_mine)
     RadioButton rbMine;
-
     private List<Fragment> list=new ArrayList<>();
-
     HomeFragment homeFragment=new HomeFragment();
     @Override
     protected int getLayoutId() {
         return R.layout.activity_home;
     }
-
     @Override
     protected void initView() {
         super.initView();
@@ -49,12 +47,11 @@ public class HomeActivity extends BaseActivity{
                 break;
             case R.id.rb_mine:
                 homePager.setCurrentItem(1);
+                NotifyUtil notifyUtil=new NotifyUtil(this,1);
+
                 break;
-
         }
-
     }
-
     @Override
     protected void initData() {
         super.initData();
@@ -77,36 +74,23 @@ public class HomeActivity extends BaseActivity{
                     rbMine.setChecked(true);
                 }
             }
-
             @Override
             public void onPageSelected(int position) {
-
             }
-
             @Override
             public void onPageScrollStateChanged(int state) {
-
             }
         });
-
-
     }
-
     private class MyAdapter extends FragmentPagerAdapter{
-
-
 
         public MyAdapter(FragmentManager supportFragmentManager) {
             super(supportFragmentManager);
-
         }
-
         @Override
         public Fragment getItem(int position) {
             return list.get(position);
-
         }
-
         @Override
         public int getCount() {
             return list.size();

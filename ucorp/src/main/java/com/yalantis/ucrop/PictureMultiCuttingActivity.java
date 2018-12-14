@@ -62,10 +62,8 @@ import java.util.Locale;
 
 @SuppressWarnings("ConstantConditions")
 public class PictureMultiCuttingActivity extends AppCompatActivity {
-
     public static final int DEFAULT_COMPRESS_QUALITY = 90;
     public static final Bitmap.CompressFormat DEFAULT_COMPRESS_FORMAT = Bitmap.CompressFormat.PNG;
-
     public static final int NONE = 0;
     public static final int SCALE = 1;
     public static final int ROTATE = 2;

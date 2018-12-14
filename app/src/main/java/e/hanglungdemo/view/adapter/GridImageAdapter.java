@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
@@ -20,20 +19,17 @@ import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.luck.picture.lib.tools.DateUtils;
 import com.luck.picture.lib.tools.StringUtils;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
 import e.hanglungdemo.R;
 
 
 /**
- * author：luck
- * project：PictureSelector
- * package：com.luck.pictureselector.adapter
- * email：893855882@qq.com
- * data：16/7/27
+ *
+ * GridImageAdapter(相册图片)
+ * @作者：wangjunchao
+ * @创建日期： 2018/11/9 08:46
  */
 public class GridImageAdapter extends RecyclerView.Adapter<GridImageAdapter.ViewHolder> {
     public static final int TYPE_CAMERA = 1;
@@ -56,32 +52,29 @@ public class GridImageAdapter extends RecyclerView.Adapter<GridImageAdapter.View
         mInflater = LayoutInflater.from(context);
         this.mOnAddPicClickListener = mOnAddPicClickListener;
     }
-
     public void setSelectMax(int selectMax) {
         this.selectMax = selectMax;
     }
-
     public void setList(List<LocalMedia> list) {
         this.list = list;
     }
-
     public class ViewHolder extends RecyclerView.ViewHolder {
-
         ImageView mImg;
         LinearLayout ll_del;
         TextView tv_duration;
 
         public ViewHolder(View view) {
             super(view);
-            mImg = (ImageView) view.findViewById(R.id.fiv);
-            ll_del = (LinearLayout) view.findViewById(R.id.ll_del);
-            tv_duration = (TextView) view.findViewById(R.id.tv_duration);
+            mImg =view.findViewById(R.id.fiv);
+            ll_del =view.findViewById(R.id.ll_del);
+            tv_duration =view.findViewById(R.id.tv_duration);
         }
     }
 
     @Override
     public int getItemCount() {
         if (list.size() < selectMax) {
+
             return list.size() + 1;
         } else {
             return list.size();
@@ -91,9 +84,13 @@ public class GridImageAdapter extends RecyclerView.Adapter<GridImageAdapter.View
     @Override
     public int getItemViewType(int position) {
         if (isShowAddItem(position)) {
+
             return TYPE_CAMERA;
+
         } else {
+
             return TYPE_PICTURE;
+
         }
     }
 
@@ -107,12 +104,10 @@ public class GridImageAdapter extends RecyclerView.Adapter<GridImageAdapter.View
         final ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
-
     private boolean isShowAddItem(int position) {
         int size = list.size() == 0 ? 0 : list.size();
         return position == size;
     }
-
     /**
      * 设置值
      */

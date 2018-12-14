@@ -1,6 +1,5 @@
 package e.library;
 
-import android.graphics.Bitmap;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

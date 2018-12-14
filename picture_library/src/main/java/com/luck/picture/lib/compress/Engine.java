@@ -11,7 +11,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
- * Responsible for starting compress and managing active and cached resources.
+ *Responsible for starting compress and managing active and cached resources.
+ *
  */
 class Engine {
   private ExifInterface srcExif;

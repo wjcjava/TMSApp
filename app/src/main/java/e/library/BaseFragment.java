@@ -1,7 +1,5 @@
 package e.library;
 
-import android.annotation.SuppressLint;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,7 +14,7 @@ public abstract class BaseFragment extends Fragment {
     private View mContentView;
     private Context mContext;
 
-    @SuppressLint("NewApi")
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

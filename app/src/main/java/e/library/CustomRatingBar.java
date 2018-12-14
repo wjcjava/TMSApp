@@ -62,9 +62,7 @@ public class CustomRatingBar extends View {
     public CustomRatingBar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initAttr(context, attrs);
-
     }
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (!mTouchAble) {
@@ -111,8 +109,6 @@ public class CustomRatingBar extends View {
 
         return true;
     }
-
-
     /**
      * 设置评分
      */
@@ -123,7 +119,6 @@ public class CustomRatingBar extends View {
         mTouchStarMark = touchStar;
         invalidate();
     }
-
     /**
      * 获得评分
      */

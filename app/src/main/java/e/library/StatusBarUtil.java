@@ -9,11 +9,9 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 public class StatusBarUtil {
-
     /**
      * 设置状态栏黑色字体图标，
      * 适配4.4以上版本MIUIV、Flyme和6.0以上版本其他Android
-     *
      * @return 1:MIUUI 2:Flyme 3:android6.0
      */
     public static int getStatusBarLightMode(Window window) {
@@ -25,8 +23,8 @@ public class StatusBarUtil {
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
             result = 3;
-        } else {//5.0
-
+        } else {
+            //5.0
         }
         return result;
     }
@@ -66,7 +64,6 @@ public class StatusBarUtil {
     /**
      * 设置状态栏图标为深色和魅族特定的文字风格
      * 可以用来判断是否为Flyme用户
-     *
      * @param window 需要设置的窗口
      * @param dark  是否把状态栏字体及图标颜色设置为深色
      * @return boolean 成功执行返回true
@@ -101,7 +98,6 @@ public class StatusBarUtil {
 
     /**
      * 设置状态栏字体图标为深色，需要MIUIV6以上
-     *
      * @param window 需要设置的窗口
      * @param dark  是否把状态栏字体及图标颜色设置为深色
      * @return boolean 成功执行返回true

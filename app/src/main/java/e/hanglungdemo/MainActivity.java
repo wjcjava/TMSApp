@@ -5,6 +5,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
@@ -19,6 +20,7 @@ import butterknife.OnClick;
 import e.hanglungdemo.view.home.activity.HomeActivity;
 import e.library.BaseActivity;
 import e.library.T;
+import e.library.commonwidget.NotifyUtil;
 
 public class MainActivity extends BaseActivity {
     @Bind(R.id.main_btn_login)
@@ -39,6 +41,7 @@ public class MainActivity extends BaseActivity {
     int mHeight;
     @Bind(R.id.title_right)
     TextView righrTitle;
+    private int requestCode;
     @OnClick(R.id.main_btn_login)
     public void click(View view) {
         switch (view.getId()) {
@@ -89,7 +92,6 @@ public class MainActivity extends BaseActivity {
             public void onAnimationRepeat(Animator animation) {
 
             }
-
             @Override
             public void onAnimationEnd(Animator animation) {
                 /**
@@ -109,7 +111,6 @@ public class MainActivity extends BaseActivity {
 
     /**
      * 出现进度动画
-     *
      * @param view
      */
     void progressAnimator(final View view) {
@@ -125,9 +126,7 @@ public class MainActivity extends BaseActivity {
         animator3.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
-
             }
-
             @Override
             public void onAnimationEnd(Animator animation) {
                 if (TextUtils.isEmpty(etName.getText()) || TextUtils.isEmpty(etPwt.getText())) {
@@ -138,14 +137,10 @@ public class MainActivity extends BaseActivity {
                     startActivity(new Intent(MainActivity.this, HomeActivity.class));
                     T.showShortToast("登录成功");
                 }
-
             }
-
             @Override
             public void onAnimationCancel(Animator animation) {
-
             }
-
             @Override
             public void onAnimationRepeat(Animator animation) {
 
@@ -171,17 +166,24 @@ public class MainActivity extends BaseActivity {
         animator2.setInterpolator(new AccelerateDecelerateInterpolator());
         animator2.start();
     }
-
-
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
     }
-
     @Override
     protected void initView() {
         super.initView();
         righrTitle.setTextColor(getResources().getColor(R.color.white));
         righrTitle.setText("登录注册");
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        PendingIntent pIntent = PendingIntent.getActivity(this,
+        requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        int smallIcon = R.drawable.video_icon;
+        String ticker = "欢迎使用TMS!";
+        String title = "TMS登录系统! ! !";
+        String content = "你正处在TMS登录页面哦,欢迎您的使用!";
+        NotifyUtil notify1 = new NotifyUtil(this, 1);
+        notify1.notify_normal_singline(pIntent, smallIcon, ticker, title, content, true, true, false);
     }
 }

@@ -8,7 +8,14 @@ import java.util.List;
 import e.hanglungdemo.R;
 import e.hanglungdemo.view.bean.OrderBean;
 
-public class OrderAdapter extends BaseQuickAdapter <OrderBean,BaseViewHolder>{
+public class
+
+
+
+
+
+
+OrderAdapter extends BaseQuickAdapter <OrderBean,BaseViewHolder>{
     public OrderAdapter(int layoutResId, List<OrderBean> list) {
         super(layoutResId,list);
     }

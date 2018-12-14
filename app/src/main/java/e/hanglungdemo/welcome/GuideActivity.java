@@ -26,7 +26,7 @@ public class GuideActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_guide);
 
-        contentFrameLayout = (PageFrameLayout) findViewById(R.id.contentFrameLayout);
+        contentFrameLayout =findViewById(R.id.contentFrameLayout);
         // 设置资源文件和选中圆点
         contentFrameLayout.setUpViews(new int[]{
                 R.layout.page_tab1,

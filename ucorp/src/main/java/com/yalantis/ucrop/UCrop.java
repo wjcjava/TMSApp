@@ -29,12 +29,9 @@ import java.util.Locale;
  * Builder class to ease Intent setup.
  */
 public class UCrop {
-
     public static final int REQUEST_CROP = 69;
     public static final int RESULT_ERROR = 96;
-
     private static final String EXTRA_PREFIX = BuildConfig.APPLICATION_ID;
-
     public static final String EXTRA_INPUT_URI = EXTRA_PREFIX + ".InputUri";
     public static final String EXTRA_OUTPUT_URI = EXTRA_PREFIX + ".OutputUri";
     public static final String EXTRA_OUTPUT_CROP_ASPECT_RATIO = EXTRA_PREFIX + ".CropAspectRatio";
@@ -43,16 +40,12 @@ public class UCrop {
     public static final String EXTRA_OUTPUT_OFFSET_X = EXTRA_PREFIX + ".OffsetX";
     public static final String EXTRA_OUTPUT_OFFSET_Y = EXTRA_PREFIX + ".OffsetY";
     public static final String EXTRA_ERROR = EXTRA_PREFIX + ".Error";
-
     public static final String EXTRA_ASPECT_RATIO_X = EXTRA_PREFIX + ".AspectRatioX";
     public static final String EXTRA_ASPECT_RATIO_Y = EXTRA_PREFIX + ".AspectRatioY";
-
     public static final String EXTRA_MAX_SIZE_X = EXTRA_PREFIX + ".MaxSizeX";
     public static final String EXTRA_MAX_SIZE_Y = EXTRA_PREFIX + ".MaxSizeY";
-
     private Intent mCropIntent;
     private Bundle mCropOptionsBundle;
-
     /**
      * This method creates new Intent builder and sets both source and destination image URIs.
      *
@@ -62,7 +55,6 @@ public class UCrop {
     public static UCrop of(@NonNull Uri source, @NonNull Uri destination) {
         return new UCrop(source, destination);
     }
-
     private UCrop(@NonNull Uri source, @NonNull Uri destination) {
         mCropIntent = new Intent();
         mCropOptionsBundle = new Bundle();

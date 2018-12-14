@@ -34,12 +34,16 @@
                 android:gravity="center"
                 android:text="ERP单号"
                 android:textColor="@color/white"
-                android:textSize="@dimen/comment_14_size"/>
+                android:textSize="@dimen/comment_13_size"/>
             <EditText
                 android:id="@+id/et_order_home"
                 android:layout_weight="4"
                 android:cursorVisible="false"
-                android:textSize="@dimen/comment_15_size"
+                android:textSize="@dimen/comment_13_size"
+                android:hint="请在此输入物流编号"
+                android:gravity="center|left"
+                android:layout_marginLeft="@dimen/comment_5_dip"
+                android:textColorHint="@color/white"
                 android:layout_width="@dimen/comment_0_dip"
                 android:layout_height="wrap_content"
                 android:background="@null"

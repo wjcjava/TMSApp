@@ -26,13 +26,13 @@ public class PicturePlayAudioActivity extends PictureBaseActivity implements Vie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picture_play_audio);
         audio_path = getIntent().getStringExtra("audio_path");
-        tv_musicStatus = (TextView) findViewById(R.id.tv_musicStatus);
-        tv_musicTime = (TextView) findViewById(R.id.tv_musicTime);
-        musicSeekBar = (SeekBar) findViewById(R.id.musicSeekBar);
-        tv_musicTotal = (TextView) findViewById(R.id.tv_musicTotal);
-        tv_PlayPause = (TextView) findViewById(R.id.tv_PlayPause);
-        tv_Stop = (TextView) findViewById(R.id.tv_Stop);
-        tv_Quit = (TextView) findViewById(R.id.tv_Quit);
+        tv_musicStatus =  findViewById(R.id.tv_musicStatus);
+        tv_musicTime =  findViewById(R.id.tv_musicTime);
+        musicSeekBar =  findViewById(R.id.musicSeekBar);
+        tv_musicTotal =  findViewById(R.id.tv_musicTotal);
+        tv_PlayPause =  findViewById(R.id.tv_PlayPause);
+        tv_Stop =  findViewById(R.id.tv_Stop);
+        tv_Quit =  findViewById(R.id.tv_Quit);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {

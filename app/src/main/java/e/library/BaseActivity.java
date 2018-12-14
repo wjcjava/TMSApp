@@ -21,7 +21,7 @@ public abstract class BaseActivity extends SwipeActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //
-// StatusBarCompat.setStatusBarColor(this, ContextCompat.getColor(this, R.color.white));
+//StatusBarCompat.setStatusBarColor(this, ContextCompat.getColor(this, R.color.white));
      //StatusBarUtil.getStatusBarLightMode(this.getWindow());
 
         setContentView(getLayoutId());
@@ -35,6 +35,7 @@ public abstract class BaseActivity extends SwipeActivity{
     @Override
     public void onStart() {
         super.onStart();
+
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.

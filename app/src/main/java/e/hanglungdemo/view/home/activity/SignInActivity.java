@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -28,6 +27,7 @@ import e.hanglungdemo.view.adapter.GridImageAdapter;
 import e.hanglungdemo.view.bean.PictureBean;
 import e.library.BaseActivity;
 import e.library.BaseDialog;
+import e.library.CustomRatingBar;
 import e.library.T;
 
 /**
@@ -45,6 +45,8 @@ public class SignInActivity extends BaseActivity {
     CheckBox damageBox;
     @Bind(R.id.box_goods_lost)
     CheckBox lostBox;
+    @Bind(R.id.score_custom)
+    CustomRatingBar customRatingBar;
     private List<LocalMedia> selectList = new ArrayList<>();
     private GridImageAdapter adapter;
     private int maxSelectNum = 9;
@@ -63,15 +65,20 @@ public class SignInActivity extends BaseActivity {
     @Override
     protected void initView() {
         super.initView();
-
         trackTitle.setTextColor(getResources().getColor(R.color.white));
         trackTitle.setText("确认签收");
-        String etLobString=etLob.getText().toString().trim();
+        String etLobString = etLob.getText().toString().trim();
+        customRatingBar.setmOnStarChangeListener(new CustomRatingBar.onStarChangedListener() {
+            @Override
+            public void onStarChange(CustomRatingBar ratingBar, float mark) {
+                etLob.setText(mark + "");
+            }
+        });
 
     }
 
     @OnClick({R.id.title_back, R.id.box_cargo_damage, R.id.box_goods_lost,
-            R.id.tv_receiving,R.id.et_lob
+            R.id.tv_receiving, R.id.et_lob
     })
     public void click(View view) {
         switch (view.getId()) {
@@ -79,10 +86,10 @@ public class SignInActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.box_cargo_damage:
-
+                T.showLongToast("你点击了我");
                 break;
             case R.id.box_goods_lost:
-
+                T.showLongToast("你点击了我");
                 break;
             case R.id.tv_receiving:
                 T.showShortToast("你点击了收货功能");
@@ -92,6 +99,7 @@ public class SignInActivity extends BaseActivity {
                 break;
         }
     }
+
     @Override
     protected void initData() {
         super.initData();
@@ -109,8 +117,6 @@ public class SignInActivity extends BaseActivity {
         @Override
         public void onAddPicClick() {
             showDialog(Gravity.BOTTOM, R.style.Bottom_Top_aniamtion);
-//
-
         }
 
     };
@@ -133,8 +139,7 @@ public class SignInActivity extends BaseActivity {
                                 .maxSelectNum(maxSelectNum)// 最大图片选择数量
                                 .minSelectNum(1)// 最小选择数量
                                 .imageSpanCount(4)// 每行显示个数
-                                .selectionMode(true ?
-                                        PictureConfig.MULTIPLE : PictureConfig.SINGLE)// 多选 or 单选
+                                .selectionMode(true ? PictureConfig.MULTIPLE : PictureConfig.SINGLE)// 多选 or 单选
                                 .previewImage(true)// 是否可预览图片
                                 .previewVideo(false)// 是否可预览视频
                                 .enablePreviewAudio(false) // 是否可播放音频
@@ -158,8 +163,8 @@ public class SignInActivity extends BaseActivity {
                                 .openClickSound(false)// 是否开启点击声音
                                 .selectionMedia(selectList)// 是否传入已选图片
                                 //.isDragFrame(false)// 是否可拖动裁剪框(固定)
-//                        .videoMaxSecond(15)
-//                        .videoMinSecond(10)
+                                //.videoMaxSecond(15)
+                                //.videoMinSecond(10)
                                 //.previewEggs(false)// 预览图片时 是否增强左右滑动图片体验(图片滑动一半即可看到上一张是否选中)
                                 //.cropCompressQuality(90)// 裁剪压缩质量 默认100
                                 .minimumCompressSize(100)// 小于100kb的图片不压缩
@@ -191,17 +196,17 @@ public class SignInActivity extends BaseActivity {
                                 .enableCrop(false)// 是否裁剪
                                 .compress(true)// 是否压缩
                                 .glideOverride(160, 160)// glide 加载宽高，越小图片列表越流畅，但会影响列表图片浏览的清晰度
-                                .withAspectRatio(0, 0)// 裁剪比例 如16:9 3:2 3:4 1:1 可自定义
+                                .withAspectRatio(0, 0)//    裁剪比例 如16:9 3:2 3:4 1:1 可自定义
                                 .hideBottomControls(true)// 是否显示uCrop工具栏，默认不显示
                                 .isGif(false)// 是否显示gif图片
                                 .freeStyleCropEnabled(false)// 裁剪框是否可拖拽
                                 .circleDimmedLayer(false)// 是否圆形裁剪
-                                .showCropFrame(false)// 是否显示裁剪矩形边框 圆形裁剪时建议设为false
-                                .showCropGrid(false)// 是否显示裁剪矩形网格 圆形裁剪时建议设为false
+                                .showCropFrame(false)// 是否显示裁剪矩形边框圆形裁剪时建议false
+                                .showCropGrid(false)// 是否显示裁剪矩形网格 圆形裁剪时建议设为                                 false
                                 .openClickSound(true)// 是否开启点击声音
                                 .selectionMedia(selectList)// 是否传入已选图片
-                                .previewEggs(false)//预览图片时 是否增强左右滑动图片体验(图片滑动一半即可看到上一张是否选中)
-                                //.previewEggs(false)// 预览图片时 是否增强左右滑动图片体验(图片滑动一半即可看到上一张是否选中)
+                                .previewEggs(false)//预览图片时 是否增强左右滑动图片体验(图片滑                                动一半即可看到上一张是否选中)
+                                //.previewEggs(false)// 预览图片时 是否增强左右滑动图片体验(图                                片滑动一半即可看到上一张是否选中)
                                 //.cropCompressQuality(90)// 裁剪压缩质量 默认为100
                                 .minimumCompressSize(100)// 小于100kb的图片不压缩
                                 //.cropWH()// 裁剪宽高比，设置如果大于图片本身宽高则无效
@@ -239,7 +244,6 @@ public class SignInActivity extends BaseActivity {
                     // 3.media.getCompressPath();为压缩后path，需判断media.isCompressed();是否为true
                     // 如果裁剪并压缩了，已取压缩路径为准，因为是先裁剪后压缩的
                     for (LocalMedia media : selectList) {
-
                         Log.i("图片-----》", media.getPath());
                     }
                     adapter.setList(selectList);

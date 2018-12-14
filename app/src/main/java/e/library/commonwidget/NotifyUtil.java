@@ -50,13 +50,14 @@ public class NotifyUtil {
      */
     private void setCompatBuilder(PendingIntent pendingIntent, int smallIcon, String ticker,
                                   String title, String content, boolean sound, boolean vibrate, boolean lights) {
-//        // 如果当前Activity启动在前台，则不开启新的Activity。
-//        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-//        // 当设置下面PendingIntent.FLAG_UPDATE_CURRENT这个参数的时候，常常使得点击通知栏没效果，你需要给notification设置一个独一无二的requestCode
-//        // 将Intent封装进PendingIntent中，点击通知的消息后，就会启动对应的程序
-//        PendingIntent pIntent = PendingIntent.getActivity(mContext,
-//                requestCode, intent, FLAG);
-
+        /**
+         *如果当前Activity启动在前台，则不开启新的Activity。
+         *intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+         *当设置下面PendingIntent.FLAG_UPDATE_CURRENT这个参数的时候，常常使得点击通知栏没效果，你需要给notification设置一个独一无二的             requestCode
+         *将Intent封装进PendingIntent中，点击通知的消息后，就会启动对应的程序
+         *PendingIntent pIntent = PendingIntent.getActivity(mContext,
+         *requestCode, intent, FLAG);
+         */
         cBuilder.setContentIntent(pendingIntent);// 该通知要启动的Intent
         cBuilder.setSmallIcon(smallIcon);// 设置顶部状态栏的小图标
         cBuilder.setTicker(ticker);// 在顶部状态栏中的提示信息
@@ -200,11 +201,11 @@ public class NotifyUtil {
         inboxStyle.setSummaryText("[" + messageList.size() + "条]" + title);
         cBuilder.setStyle(inboxStyle);
         sent();
+
     }
 
     /**
      * 自定义视图的通知
-     *
      * @param remoteViews
      * @param pendingIntent
      * @param smallIcon

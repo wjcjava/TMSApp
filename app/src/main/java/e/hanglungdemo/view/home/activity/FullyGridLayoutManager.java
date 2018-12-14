@@ -21,17 +21,15 @@ public class FullyGridLayoutManager extends GridLayoutManager {
 
     public FullyGridLayoutManager(Context context, int spanCount, int orientation, boolean reverseLayout) {
         super(context, spanCount, orientation, reverseLayout);
+
     }
-
     private int[] mMeasuredDimension = new int[2];
-
     @Override
     public void onMeasure(RecyclerView.Recycler recycler, RecyclerView.State state, int widthSpec, int heightSpec) {
         final int widthMode = View.MeasureSpec.getMode(widthSpec);
         final int heightMode = View.MeasureSpec.getMode(heightSpec);
         final int widthSize = View.MeasureSpec.getSize(widthSpec);
         final int heightSize = View.MeasureSpec.getSize(heightSpec);
-
         int width = 0;
         int height = 0;
         int count = getItemCount();
@@ -57,14 +55,12 @@ public class FullyGridLayoutManager extends GridLayoutManager {
                 }
             }
         }
-
         switch (widthMode) {
             case View.MeasureSpec.EXACTLY:
                 width = widthSize;
             case View.MeasureSpec.AT_MOST:
             case View.MeasureSpec.UNSPECIFIED:
         }
-
         switch (heightMode) {
             case View.MeasureSpec.EXACTLY:
                 height = heightSize;

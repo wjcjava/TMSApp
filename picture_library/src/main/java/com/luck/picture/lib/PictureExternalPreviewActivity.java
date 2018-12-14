@@ -78,9 +78,9 @@ public class PictureExternalPreviewActivity extends PictureBaseActivity implemen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.picture_activity_external_preview);
         inflater = LayoutInflater.from(this);
-        tv_title = (TextView) findViewById(R.id.picture_title);
-        left_back = (ImageButton) findViewById(R.id.left_back);
-        viewPager = (PreviewViewPager) findViewById(R.id.preview_pager);
+        tv_title = findViewById(R.id.picture_title);
+        left_back = findViewById(R.id.left_back);
+        viewPager = findViewById(R.id.preview_pager);
         position = getIntent().getIntExtra(PictureConfig.EXTRA_POSITION, 0);
         directory_path = getIntent().getStringExtra(PictureConfig.DIRECTORY_PATH);
         images = (List<LocalMedia>) getIntent().getSerializableExtra(PictureConfig.EXTRA_PREVIEW_SELECT_LIST);
@@ -180,7 +180,6 @@ public class PictureExternalPreviewActivity extends PictureBaseActivity implemen
                                     dismissDialog();
                                     return false;
                                 }
-
                                 @Override
                                 public boolean onResourceReady(GifDrawable resource, Object model
                                         , Target<GifDrawable> target, DataSource dataSource,
@@ -249,7 +248,6 @@ public class PictureExternalPreviewActivity extends PictureBaseActivity implemen
                                             ToastManage.s(mContext, getString(R.string.picture_jurisdiction));
                                         }
                                     }
-
                                     @Override
                                     public void onError(Throwable e) {
                                     }
@@ -266,10 +264,8 @@ public class PictureExternalPreviewActivity extends PictureBaseActivity implemen
             return contentView;
         }
     }
-
     /**
      * 加载长图
-     *
      * @param bmp
      * @param longImg
      */
@@ -291,10 +287,10 @@ public class PictureExternalPreviewActivity extends PictureBaseActivity implemen
                 ScreenUtils.getScreenWidth(PictureExternalPreviewActivity.this) * 3 / 4,
                 ScreenUtils.getScreenHeight(PictureExternalPreviewActivity.this) / 4,
                 R.layout.picture_wind_base_dialog_xml, R.style.Theme_dialog);
-        Button btn_cancel = (Button) dialog.findViewById(R.id.btn_cancel);
-        Button btn_commit = (Button) dialog.findViewById(R.id.btn_commit);
-        TextView tv_title = (TextView) dialog.findViewById(R.id.tv_title);
-        TextView tv_content = (TextView) dialog.findViewById(R.id.tv_content);
+        Button btn_cancel =  dialog.findViewById(R.id.btn_cancel);
+        Button btn_commit =  dialog.findViewById(R.id.btn_commit);
+        TextView tv_title =  dialog.findViewById(R.id.tv_title);
+        TextView tv_content =  dialog.findViewById(R.id.tv_content);
         tv_title.setText(getString(R.string.picture_prompt));
         tv_content.setText(getString(R.string.picture_prompt_content));
         btn_cancel.setOnClickListener(new View.OnClickListener() {
@@ -393,6 +389,7 @@ public class PictureExternalPreviewActivity extends PictureBaseActivity implemen
                     ToastManage.s(mContext, getString(R.string.picture_save_success) + "\n" + path);
                     dismissDialog();
                     break;
+
             }
         }
     };
