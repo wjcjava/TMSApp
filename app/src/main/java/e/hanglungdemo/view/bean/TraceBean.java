@@ -2,9 +2,9 @@ package e.hanglungdemo.view.bean;
 
 public class TraceBean {
     /** 时间 */
-    private String acceptTime;
+     String acceptTime;
     /** 描述 */
-    private String acceptStation;
+     String acceptStation;
 
     public TraceBean() {
     }
