@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
-        android:src="@drawable/home_middle_five" />
+        android:src="@drawable/guide_d" />
 
     <TextView
         android:id="@+id/id_ok"
@@ -19,6 +19,6 @@
         android:background="@drawable/btn_innew"
         android:gravity="center"
         android:text="立即体验"
-        android:textColor="@android:color/white"
-        android:textSize="16sp" />
+        android:textColor="@color/addDark_green"
+        android:textSize="@dimen/comment_16_size" />
 </RelativeLayout>

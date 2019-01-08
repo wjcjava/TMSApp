@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/alpha_05_black"
-    tools:context=".view.home.activity.TrackingActivity">
+    tools:context=".ui.home.activity.TrackingActivity">
     <include
         android:id="@+id/icon"
         layout="@layout/layout_titler"/>

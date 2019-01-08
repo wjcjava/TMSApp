@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    aaptOptions {         cruncherEnabled = false     }
+    aaptOptions { cruncherEnabled = false }
     compileSdkVersion 27
     defaultConfig {
         applicationId "e.hanglungdemo"

@@ -8,7 +8,7 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    tools:context=".view.home.activity.SignInActivity">
+    tools:context=".ui.home.activity.SignInActivity">
 
     <include
         android:id="@+id/icon"

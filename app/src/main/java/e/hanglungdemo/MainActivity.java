@@ -7,20 +7,23 @@ import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import e.hanglungdemo.view.home.activity.HomeActivity;
+import e.hanglungdemo.ui.home.activity.HomeActivity;
 import e.library.BaseActivity;
 import e.library.T;
 import e.library.commonwidget.NotifyUtil;
+import e.library.commonwidget.StatusBarCompat;
 
 public class MainActivity extends BaseActivity {
     @Bind(R.id.main_btn_login)
@@ -41,6 +44,8 @@ public class MainActivity extends BaseActivity {
     int mHeight;
     @Bind(R.id.title_right)
     TextView righrTitle;
+    @Bind(R.id.title_back)
+    ImageView black;
     private int requestCode;
     @OnClick(R.id.main_btn_login)
     public void click(View view) {
@@ -53,6 +58,9 @@ public class MainActivity extends BaseActivity {
                 mName.setVisibility(View.INVISIBLE);
                 mPsw.setVisibility(View.INVISIBLE);
                 inputAnimator(mInputLayout, mWidth, mHeight);
+                break;
+            case R.id.title_right:
+
                 break;
         }
     }
@@ -173,8 +181,9 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initView() {
         super.initView();
-        righrTitle.setTextColor(getResources().getColor(R.color.white));
-        righrTitle.setText("登录注册");
+        StatusBarCompat.setStatusBarColor(this, ContextCompat.getColor(this, R.color.Light_blue_hot));
+        black.setVisibility(View.GONE);
+        righrTitle.setText("注册");
         Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         PendingIntent pIntent = PendingIntent.getActivity(this,

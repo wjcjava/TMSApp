@@ -150,6 +150,9 @@
     <dimen name="comment_6_dip">6dp</dimen>
     <dimen name="comment_75_dip">75dp</dimen>
     <dimen name="comment_8_dip">8dp</dimen>
+    <dimen name="comment_40_size">40sp</dimen>
+    <dimen name="comment_30_size">30sp</dimen>
+    <dimen name="comment_35_dip">35dp</dimen>
 
 
 </resources>

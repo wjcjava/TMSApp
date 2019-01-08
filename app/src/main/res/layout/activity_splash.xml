@@ -4,24 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:gravity="bottom"
+    android:background="@drawable/logistics_background"
     tools:context=".welcome.SplashActivity"
     >
-    <ImageView
-        android:id="@+id/iv_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:src="@mipmap/icon_logo"
-        />
+
     <TextView
-        android:layout_below="@id/iv_logo"
+        android:id="@+id/logistics_name"
         android:layout_width="wrap_content"
+        android:gravity="center"
         android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
         android:text="欢迎使用TMS系统"
-        android:textColor="@color/blue"
-        android:textSize="@dimen/comment_14_size"
+        android:layout_marginBottom="@dimen/comment_40_dip"
+        android:textColor="@color/Deepblue"
+        android:textSize="@dimen/comment_30_size"
         />
 </RelativeLayout>

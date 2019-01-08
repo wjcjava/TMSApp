@@ -19,18 +19,15 @@
             android:gravity="center_vertical"
             android:orientation="horizontal" >
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                 />
-
             <EditText
                 android:id="@+id/et_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/comment_10_dip"
-                android:background="@color/white"
+                android:background="@color/tranparent"
                 android:hint="账号/用户名/邮箱"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
                 android:padding="@dimen/comment_5_dip"
                 android:textSize="@dimen/comment_14_size" />
         </LinearLayout>
@@ -40,7 +37,7 @@
             android:layout_height="@dimen/comment_1_dip"
             android:layout_marginBottom="@dimen/comment_5_dip"
             android:layout_marginTop="@dimen/comment_5_dip"
-            android:background="@color/alpha_05_black" />
+            android:background="@color/white" />
 
         <LinearLayout
             android:id="@+id/input_layout_psw"
@@ -49,17 +46,14 @@
             android:gravity="center_vertical"
             android:orientation="horizontal" >
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                 />
-
             <EditText
                 android:id="@+id/et_pwt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
                 android:layout_marginLeft="@dimen/comment_10_dip"
-                android:background="@color/white"
+                android:background="@color/tranparent"
                 android:hint="密码"
                 android:inputType="textPassword"
                 android:padding="@dimen/comment_5_dip"
