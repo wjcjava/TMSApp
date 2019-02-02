@@ -31,8 +31,6 @@ public class SplashActivity extends BaseActivity{
 
     @Override
     protected int getLayoutId() {
-        //设置无标题
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         //设置全屏
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
