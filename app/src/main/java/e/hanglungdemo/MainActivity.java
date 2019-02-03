@@ -24,6 +24,7 @@ import e.library.BaseActivity;
 import e.library.T;
 import e.library.commonwidget.NotifyUtil;
 import e.library.commonwidget.StatusBarCompat;
+import e.library.commonwidget.StatusBarUtil;
 
 public class MainActivity extends BaseActivity {
     @Bind(R.id.main_btn_login)
@@ -181,9 +182,8 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initView() {
         super.initView();
-        StatusBarCompat.setStatusBarColor(this, ContextCompat.getColor(this, R.color.Light_blue_hot));
         black.setVisibility(View.GONE);
-        righrTitle.setText("注册");
+        StatusBarUtil.immersive(this);
         Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         PendingIntent pIntent = PendingIntent.getActivity(this,
